@@ -1,0 +1,88 @@
+# .NET Core / Blazor specific
+bin/
+obj/
+*.user
+*.userosscache
+*.sln.docstates
+*.userprefs
+
+# Visual Studio files
+.vs/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln.ide
+*.ide/
+*.swp
+*.swo
+*.*proj.user
+.vscode/
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+build/
+bld/
+[Bb]in/
+[Oo]bj/
+[Oo]ut/
+msbuild.log
+msbuild.err
+msbuild.wrn
+
+# Blazor WebAssembly specific
+wwwroot/dist/
+**/wwwroot/css/app.min.css
+**/wwwroot/js/app.min.js
+**/wwwroot/service-worker.*
+**/*.blazor.config
+**/*.blazor.boot.json
+
+# Visual Studio Code specific
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# PostgreSQL specific
+*.log
+pgdata/
+
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+appsettings.*.json
+!appsettings.json
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Dependencies
+node_modules/
+packages/
+*.nuget.props
+*.nuget.targets
+
+# IDE - JetBrains Rider
+.idea/
+*.sln.iml
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/dictionaries
+.idea/vcs.xml
+.idea/jsLibraryMappings.xml
+
+# OS specific
+.DS_Store
+Thumbs.db
+Desktop.ini

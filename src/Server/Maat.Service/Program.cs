@@ -1,5 +1,4 @@
-using Maat.Service.Data;
-using Microsoft.EntityFrameworkCore;
+using Maat.Persistence.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,8 +6,9 @@ var builder = WebApplication.CreateBuilder(args);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddPersistence(builder.Configuration);
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

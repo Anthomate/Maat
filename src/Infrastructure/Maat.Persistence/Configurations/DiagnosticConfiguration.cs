@@ -24,7 +24,8 @@ public class DiagnosticConfiguration : IEntityTypeConfiguration<Diagnostic>
             .IsRequired();
 
         builder.HasMany(d => d.Recommendations)
-            .WithOne()
-            .HasForeignKey("DiagnosticId");
+            .WithOne(r => r.Diagnostic)
+            .HasForeignKey(r => r.DiagnosticId)
+            .IsRequired();
     }
 }

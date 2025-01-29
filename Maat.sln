@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# 
+#
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{11856BB1-7033-4C3E-AD68-450075F5168B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{75E0D9C0-7CA8-43FE-AB29-CEA5AF4486D3}"
@@ -25,7 +25,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maat.Client", "src\Client\M
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Server", "Server", "{205E4B0D-D172-4D78-BC24-E18064340818}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maat.Server", "src\Server\Maat.Server\Maat.Server.csproj", "{B2A34C21-D163-44E4-88B4-8D7F9A68311D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maat.Service", "src\Server\Maat.Service\Maat.Service.csproj", "{B2A34C21-D163-44E4-88B4-8D7F9A68311D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

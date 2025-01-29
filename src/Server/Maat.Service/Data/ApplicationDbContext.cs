@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace Maat.Server.Data;
+namespace Maat.Service.Data;
 
 public class ApplicationDbContext : DbContext
 {

@@ -1,6 +1,8 @@
+using Maat.Domain.Entities.Base;
+
 namespace Maat.Domain.Entities;
 
-public class QuestionOption
+public class QuestionOption : BaseEntity
 {
     public string Text { get; private set; }
     public decimal Score { get; private set; }

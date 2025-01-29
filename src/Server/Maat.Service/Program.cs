@@ -1,4 +1,4 @@
-using Maat.Server.Data;
+using Maat.Service.Data;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

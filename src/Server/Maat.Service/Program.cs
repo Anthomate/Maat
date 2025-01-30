@@ -1,4 +1,5 @@
 using System.Text;
+using Maat.Application.Features.Auth.Commands.Register;
 using Maat.Infrastructure.Authentication;
 using Maat.Infrastructure.DependencyInjection;
 using Maat.Persistence.DependencyInjection;
@@ -48,6 +49,11 @@ builder.Services.AddCors(options =>
             .WithOrigins("https://localhost:5001")
             .AllowAnyMethod()
             .AllowAnyHeader());
+});
+
+// MediatR
+builder.Services.AddMediatR(cfg => {
+    cfg.RegisterServicesFromAssembly(typeof(RegisterCommand).Assembly);
 });
 
 var app = builder.Build();

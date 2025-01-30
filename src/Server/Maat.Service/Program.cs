@@ -5,6 +5,7 @@ using Maat.Infrastructure.DependencyInjection;
 using Maat.Persistence.DependencyInjection;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -54,6 +55,46 @@ builder.Services.AddCors(options =>
 // MediatR
 builder.Services.AddMediatR(cfg => {
     cfg.RegisterServicesFromAssembly(typeof(RegisterCommand).Assembly);
+});
+
+// Swagger
+builder.Services.AddSwaggerGen(options =>
+{
+    options.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Title = "Maât RSE API",
+        Version = "v1",
+        Description = "Maat RSE API",
+        Contact = new OpenApiContact
+        {
+            Name = "Maât RSE",
+            Email = "contact@maat-rse.com"
+        }
+    });
+
+    options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
+        Name = "Authorization",
+        In = ParameterLocation.Header,
+        Type = SecuritySchemeType.ApiKey,
+        Scheme = "Bearer"
+    });
+
+    options.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "Bearer"
+                }
+            },
+            Array.Empty<string>()
+        }
+    });
 });
 
 var app = builder.Build();

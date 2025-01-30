@@ -1,8 +1,10 @@
 using System.Text;
 using Maat.Application.Features.Auth.Commands.Register;
+using Maat.Domain.Interfaces.Repositories;
 using Maat.Infrastructure.Authentication;
 using Maat.Infrastructure.DependencyInjection;
 using Maat.Persistence.DependencyInjection;
+using Maat.Persistence.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -11,9 +13,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 // Configuration JWT
 var jwtSettings = builder.Configuration.GetSection("JwtSettings").Get<JwtSettings>();
 builder.Services.AddAuthentication(options =>
@@ -97,6 +100,8 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 
+builder.Services.AddAuthorization();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -113,4 +118,5 @@ app.UseCors("AllowBlazorApp");
 app.UseAuthentication();
 app.UseAuthorization();
 
+app.MapControllers();
 app.Run();

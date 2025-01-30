@@ -203,7 +203,23 @@ public class AuthControllerTests : IntegrationTestBase
         var token = await GetAuthenticationToken(user.Email, "Password123!");
         SetAuthorizationHeader(token);
 
-        var response = await _client.GetAsync("/api/protected-endpoint");
+        var response = await _client.GetAsync("/api/TestAuth/protected");
+        
+        response.StatusCode.Should().Be(HttpStatusCode.OK);
+    }
+    
+    [Fact]
+    public async Task AuthenticatedEndpoint_WithoutToken_ReturnsUnauthorized()
+    {
+        var response = await _client.GetAsync("/api/TestAuth/protected");
+
+        response.StatusCode.Should().Be(HttpStatusCode.Unauthorized);
+    }
+
+    [Fact]
+    public async Task PublicEndpoint_WithoutToken_ReturnsSuccess()
+    {
+        var response = await _client.GetAsync("/api/TestAuth/public");
 
         response.StatusCode.Should().Be(HttpStatusCode.OK);
     }
